@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Migrate git repository from GitHub to GitLab &mdash; OTC-TCS Documentation Template 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon-48x48.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'0.1',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/tcs-custom.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tcs-custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Set up Ubuntu on Windows for Sphinx development" href="set-up-ubuntu-on-windows.html" />
+    <link rel="prev" title="Documentation Generation Guide" href="docbuild.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> OTC-TCS Documentation Template
+          
+
+          
+            
+            <img src="../../_static/logo_white_200w.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/index.html">Introduction to the Documentation Template Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">How-Tos</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#technical-notes">Technical Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tech/pandocs-conversion.html">Pandocs Conversion Tutorial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tech/pandocs-conversion.html#scope">Scope</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tech/pandocs-conversion.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tech/pandocs-conversion.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tech/pandocs-conversion.html#single-file-conversion">Single file Conversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tech/pandocs-conversion.html#multiple-file-conversion-using-pandoc">Multiple file Conversion using Pandoc</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tech/placeholder.html">Work in Progress</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#process-notes">Process Notes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="guide.html">Documentation Template Setup Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="guide.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guide.html#setup-the-documentation-source-repository-doc-repo">Setup the Documentation Source Repository (doc-repo)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guide.html#populate-documentation-source-repository">Populate Documentation Source Repository</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="publish.html">Set up Publish directory and GitHub pages repository</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="publish.html#create-the-github-pages-repository">Create the GitHub Pages Repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="publish.html#clone-your-github-pages-repository-to-your-local-working-directory">Clone your GitHub pages repository to your local working directory</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="docbuild.html">Documentation Generation Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docbuild.html#documentation-overview">Documentation overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docbuild.html#set-up-the-documentation-working-folders">Set up the documentation working folders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docbuild.html#installing-the-documentation-tools">Installing the documentation tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docbuild.html#documentation-presentation-theme">Documentation presentation theme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docbuild.html#running-the-documentation-processors">Running the documentation processors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docbuild.html#publishing-content">Publishing content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docbuild.html#basic-editing-and-making-the-template-your-own">Basic editing and making the template your own</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Migrate git repository from GitHub to GitLab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="set-up-ubuntu-on-windows.html">Set up Ubuntu on Windows for Sphinx development</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="set-up-ubuntu-on-windows.html#install-the-windows-subsystem-for-linux">Install the Windows Subsystem for Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="set-up-ubuntu-on-windows.html#configure-your-ubuntu-distro-for-the-proxy">Configure your Ubuntu distro for the proxy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="set-up-ubuntu-on-windows.html#set-up-your-ssh-key">Set up your ssh key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="set-up-ubuntu-on-windows.html#install-dependencies">Install dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="set-up-ubuntu-on-windows.html#some-rules">Some Rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contributing to the Project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../contribute/contribute_guidelines.html">Contribution Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../contribute/contribute_guidelines.html#licensing">Licensing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../contribute/contribute_guidelines.html#developer-certification-of-origin-dco">Developer Certification of Origin (DCO)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../contribute/contribute_guidelines.html#dco-sign-off-methods">DCO Sign-Off Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../contribute/contribute_guidelines.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../contribute/doc_guidelines.html">Documentation Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../contribute/doc_guidelines.html#headings">Headings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../contribute/doc_guidelines.html#this-is-a-collapsible-section">This is a collapsible section</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../contribute/doc_guidelines.html#content-highlighting">Content Highlighting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../contribute/doc_guidelines.html#lists">Lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../contribute/doc_guidelines.html#multi-column-lists">Multi-column lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../contribute/doc_guidelines.html#file-names-and-commands">File names and Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../contribute/doc_guidelines.html#internal-cross-reference-linking">Internal Cross-Reference Linking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../contribute/doc_guidelines.html#non-ascii-characters">Non-ASCII Characters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../contribute/doc_guidelines.html#code-and-command-examples">Code and Command Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../contribute/doc_guidelines.html#tabs-spaces-and-indenting">Tabs, spaces, and indenting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">OTC-TCS Documentation Template</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">How-Tos</a> &raquo;</li>
+        
+      <li>Migrate git repository from GitHub to GitLab</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="migrate-git-repository-from-github-to-gitlab">
+<span id="migrate-repo"></span><h1>Migrate git repository from GitHub to GitLab<a class="headerlink" href="#migrate-git-repository-from-github-to-gitlab" title="Permalink to this headline">¶</a></h1>
+<p>This guide assumes that you’re comfortable using git from the command line.
+Though these instructions refer to Intel internal instances of Github and
+GitLab, the basic steps could be applied to any two remote git repositories.</p>
+<ol class="arabic">
+<li><p class="first">Create an account in GitLab using AGS (<a class="reference external" href="https://ags.intel.com">https://ags.intel.com</a>)</p>
+</li>
+<li><p class="first">Create a New Project</p>
+<img alt="../../_images/new_project.png" src="../../_images/new_project.png" />
+</li>
+<li><p class="first">You may want to make it public, and do not initialize it. I called mine
+“test-repo.” It needs to be 100% empty:</p>
+<img alt="../../_images/create_project.png" src="../../_images/create_project.png" />
+</li>
+<li><p class="first">Grab the clone URL:</p>
+<img alt="../../_images/copy_url.png" src="../../_images/copy_url.png" />
+</li>
+<li><p class="first">Open a terminal and navigate to the GitHub repo that you want to migrate
+to GitLab and change the remote. Make sure that your local instance of the
+repo is up to date first.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a clone of the github repository you want to migrate</span>
+git clone git@github.intel.com:OTC-TCS/documentation-template.git
+<span class="c1"># create the new remote</span>
+git remote add gitlab-new ssh://git@gitlab.devtools.intel.com:29418/kputnam/test-repo.git
+<span class="c1"># verify that it added properly</span>
+cat .git/config
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> note the last remote entry
+<span class="go">[core]</span>
+<span class="go">    repositoryformatversion = 0</span>
+<span class="go">    filemode = false</span>
+<span class="go">    bare = false</span>
+<span class="go">    logallrefupdates = true</span>
+<span class="go">[remote &quot;origin&quot;]</span>
+<span class="go">    url = git@github.intel.com:OTC-TCS/documentation-template.git</span>
+<span class="go">    fetch = +refs/heads/*:refs/remotes/origin/*</span>
+<span class="go">[branch &quot;master&quot;]</span>
+<span class="go">    remote = origin</span>
+<span class="go">    merge = refs/heads/master</span>
+<span class="go">[remote &quot;gitlab-new&quot;]</span>
+<span class="go">    url = ssh://git@gitlab.devtools.intel.com:29418/kputnam/test-repo.git</span>
+<span class="go">    fetch = +refs/heads/*:refs/remotes/gitlab-new/*</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># push all branches to new remote</span>
+git push gitlab-new --all
+</pre></div>
+</div>
+</li>
+<li><p class="first">You’re done</p>
+</li>
+</ol>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, OTC-TCS Documentation Template
+      <span class="lastupdated">
+        Last updated on Feb 21, 2019.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
